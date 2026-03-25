@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vivek Dev | Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, #fffafc 0%, #f7f5ff 45%, #f3fbff 100%);
+      color: #4b4453;
+      line-height: 1.6;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #eadff0;
+      padding: 16px 30px;
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #6d597a;
+      font-weight: bold;
+      transition: 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #b5838d;
+    }
+
+    header {
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .hero {
+      max-width: 1000px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .hero-text {
+      animation: fadeUp 1s ease;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: #f7d9e3;
+      color: #7a5c61;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(181, 131, 141, 0.15);
+    }
+
+    .hero h1 {
+      font-size: 54px;
+      line-height: 1.1;
+      color: #6d597a;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #6b7280;
+      max-width: 620px;
+      margin-bottom: 28px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 12px 22px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      transition: 0.3s ease;
+    }
+
+    .btn-primary {
+      background: #cdb4db;
+      color: #3d314a;
+      box-shadow: 0 8px 20px rgba(205, 180, 219, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: #c3aed6;
+    }
+
+    .btn-secondary {
+      background: #d8f3dc;
+      color: #3d5a40;
+      box-shadow: 0 8px 20px rgba(216, 243, 220, 0.4);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      background: #c7ebce;
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid #efe4f5;
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 16px 40px rgba(185, 176, 212, 0.18);
+      animation: fadeUp 1.2s ease;
+    }
+
+    .hero-card h3 {
+      color: #6d597a;
+      margin-bottom: 14px;
+      font-size: 22px;
+    }
+
+    .hero-card p {
+      color: #6b7280;
+      margin-bottom: 10px;
+    }
+
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 80px 20px;
+      animation: fadeIn 1s ease;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 34px;
+      color: #6d597a;
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #7b8190;
+      max-width: 700px;
+      margin: 0 auto 40px;
+    }
+
+    .about-box,
+    .contact-box {
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid #ece2f2;
+      border-radius: 22px;
+      padding: 32px;
+      box-shadow: 0 12px 30px rgba(185, 176, 212, 0.14);
+    }
+
+    .about-box p {
+      font-size: 17px;
+      color: #5f6470;
+      text-align: center;
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid #ece2f2;
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 12px 26px rgba(185, 176, 212, 0.14);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 34px rgba(185, 176, 212, 0.2);
+    }
+
+    .project-card h3 {
+      color: #6d597a;
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
+
+    .project-card p {
+      color: #6b7280;
+      font-size: 15px;
+    }
+
+    form {
+      max-width: 560px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid #e8dff0;
+      border-radius: 14px;
+      background: #ffffff;
+      font-size: 15px;
+      color: #4b4453;
+      outline: none;
+      transition: 0.3s ease;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: #cdb4db;
+      box-shadow: 0 0 0 4px rgba(205, 180, 219, 0.2);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 130px;
+    }
+
+    .submit-btn {
+      background: #a0c4ff;
+      color: #243b53;
+      font-weight: bold;
+      border: none;
+      border-radius: 14px;
+      padding: 14px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 10px 24px rgba(160, 196, 255, 0.35);
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      background: #92bbff;
+    }
+
+    #statusText {
+      text-align: center;
+      margin-top: 16px;
+      font-weight: bold;
+      color: #5c7c64;
+    }
+
+    footer {
+      text-align: center;
+      padding: 26px 20px;
+      color: #7b8190;
+      background: rgba(255, 255, 255, 0.5);
+      border-top: 1px solid #eadff0;
+      margin-top: 40px;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0.4;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        gap: 16px;
+        padding: 14px 16px;
+        flex-wrap: wrap;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .section-title {
+        font-size: 28px;
+      }
+
+      .about-box,
+      .contact-box,
+      .hero-card {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <header id="home">
+    <div class="hero">
+      <div class="hero-text">
+        <div class="hero-badge">Aspiring Software Engineer • Computing Enthusiast</div>
+        <h1>Hello, I'm Vivek Dev</h1>
+        <p>
+          I’m a BCA General student with a strong interest in computing, problem-solving,
+          and building practical projects that improve my technical skills. I’m especially
+          interested in cloud technologies and how they support modern applications,
+          scalability, and real-world digital solutions. I enjoy learning by creating,
+          experimenting, and steadily growing toward a career in data analytics.
+        </p>
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h3>Quick Introduction</h3>
+        <p><strong>Name:</strong> Vivek Dev</p>
+        <p><strong>Course:</strong> BCA General</p>
+        <p><strong>Career Goal:</strong> Software Engineer</p>
+        <p><strong>Interests:</strong> Computing, cloud, beginner web development, and data-focused learning</p>
+      </div>
+    </div>
+  </header>
+
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+    <p class="section-subtitle">
+      A short introduction about my background, interests, and what I am working toward.
+    </p>
+    <div class="about-box">
+      <p>
+        I am <strong>Vivek Dev</strong>, currently pursuing <strong>BCA General</strong>.
+        I am working toward becoming a <strong>Software Engineer</strong> and I enjoy learning
+        concepts related to computing, databases, web development, and cloud platforms.
+        Cloud is a definite interest of mine because I find it exciting how applications
+        can be deployed, managed, and scaled online. I like building simple projects that
+        strengthen my understanding and help me gain practical experience step by step.
+      </p>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2 class="section-title">Projects</h2>
+    <p class="section-subtitle">
+      Some beginner-friendly projects that reflect my current learning journey.
+    </p>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Student Marks Calculator</h3>
+        <p>
+          A simple project that accepts marks as input and calculates total marks,
+          average, and performance grade.
+        </p>
+      </div>
+
+      <div class="project-card">
+        <h3>Basic Expense Tracker</h3>
+        <p>
+          A beginner project to record expenses and review spending patterns in a
+          simple and organized way.
+        </p>
+      </div>
+
+      <div class="project-card">
+        <h3>Portfolio Website</h3>
+        <p>
+          A full-stack personal portfolio with sections for introduction, projects,
+          contact form, database saving, and deployment.
+        </p>
+      </div>
+
+      <div class="project-card">
+        <h3>To-Do List App</h3>
+        <p>
+          A basic application that helps manage daily tasks by allowing users to add,
+          track, and remove items.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 class="section-title">Contact</h2>
+    <p class="section-subtitle">
+      Feel free to send a message through the form below.
+    </p>
+    <div class="contact-box">
+      <form id="contactForm">
+        <input type="text" id="fullName" placeholder="Enter your name" required />
+        <input type="email" id="emailAddress" placeholder="Enter your email" required />
+        <textarea id="userMessage" placeholder="Enter your message" required></textarea>
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+      <p id="statusText"></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Dannie John | Portfolio</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById("contactForm");
+    const statusText = document.getElementById("statusText");
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const fullName = document.getElementById("fullName").value.trim();
+      const emailAddress = document.getElementById("emailAddress").value.trim();
+      const userMessage = document.getElementById("userMessage").value.trim();
+
+      const payload = {
+        name: fullName,
+        email: emailAddress,
+        message: userMessage
+      };
+
+      try {
+        const response = await fetch("/save", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.text();
+        statusText.textContent = result;
+        form.reset();
+      } catch (error) {
+        statusText.textContent = "Something went wrong. Please try again.";
+      }
+    });
+  </script>
+
+</body>
+</html>
